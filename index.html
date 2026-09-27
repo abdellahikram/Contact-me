@@ -1,413 +1,321 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ffffff">
-<title>التواصل معنا</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102746">
+<title>مرحباً بكم | التواصل معنا</title>
 
 <style>
 *{box-sizing:border-box}
-
-html,body{margin:0;padding:0}
-
+html,body{margin:0;min-height:100%}
 body{
+  font-family:Tahoma,Arial,sans-serif;
+  background:#102746;
   min-height:100vh;
-  padding:18px 12px;
-  font-family:Arial,"Tahoma",sans-serif;
-  color:#17233a;
-  background:#f8f7f3;
+  padding:22px 12px;
   position:relative;
   overflow-x:hidden;
 }
 
-/* زخارف الخلفية */
-body:before,
-body:after{
+/* خلفية زخرفية واضحة */
+body:before{
   content:"";
   position:fixed;
-  z-index:0;
+  inset:0;
   pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 8%,rgba(218,180,91,.35) 0 2px,transparent 3px),
+    radial-gradient(circle at 92% 92%,rgba(218,180,91,.35) 0 2px,transparent 3px);
 }
 
-body:before{
-  width:260px;
+/* أقواس ذهبية في الخلفية */
+.bg-top,.bg-bottom{
+  position:fixed;
+  width:430px;
   height:260px;
-  top:-105px;
-  left:-105px;
+  border:3px solid #d9b65e;
   border-radius:50%;
-  border:2px solid #d1b06a;
-  box-shadow:
-    0 0 0 9px #fff,
-    0 0 0 11px #e3c985,
-    0 0 0 20px #fff;
+  pointer-events:none;
+  z-index:0;
 }
+.bg-top{top:-205px;left:-190px;transform:rotate(-18deg)}
+.bg-bottom{bottom:-205px;right:-190px;transform:rotate(-18deg)}
 
-body:after{
-  width:330px;
-  height:180px;
-  right:-170px;
-  bottom:-70px;
-  border-radius:50%;
-  border:2px solid #d1b06a;
-  transform:rotate(-18deg);
-  box-shadow:0 0 0 8px #fff,0 0 0 10px #e3c985;
+.page{
+  width:100%;
+  max-width:470px;
+  margin:auto;
+  position:relative;
+  z-index:1;
 }
 
 .card{
   position:relative;
-  z-index:1;
-  width:100%;
-  max-width:460px;
-  margin:0 auto;
-  background:rgba(255,255,255,.98);
-  border:1px solid #ded5c1;
-  border-radius:24px;
   overflow:hidden;
-  box-shadow:0 8px 28px rgba(30,40,55,.10);
+  background:#fff;
+  border:2px solid #d9b65e;
+  border-radius:28px;
+  box-shadow:0 18px 50px rgba(0,0,0,.30);
 }
 
-/* خطوط ذهبية زخرفية أعلى البطاقة */
-.card:before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:7px;
-  background:#c9a24b;
+/* شريط علوي */
+.card-head{
+  position:relative;
+  background:#fff;
+  padding:30px 18px 24px;
+  text-align:center;
 }
 
-/* زخارف نباتية بسيطة */
-.decor{
+/* زخارف نباتية مرسومة بـ CSS */
+.flower{
   position:absolute;
-  z-index:0;
-  width:110px;
-  height:150px;
-  pointer-events:none;
-  opacity:.7;
+  width:95px;
+  height:120px;
+  opacity:.75;
 }
-.decor.top-left{top:5px;left:0}
-.decor.bottom-right{bottom:0;right:0;transform:rotate(180deg)}
-
-.branch{
+.flower.left{top:0;left:-8px}
+.flower.right{top:0;right:-8px;transform:scaleX(-1)}
+.stem{
   position:absolute;
-  width:85px;
-  height:2px;
-  background:#c9a24b;
-  transform:rotate(-42deg);
-  transform-origin:left center;
-  top:30px;
-  left:10px;
+  width:2px;
+  height:105px;
+  background:#d1a94e;
+  left:38px;
+  top:8px;
+  transform:rotate(28deg);
 }
 .leaf{
   position:absolute;
-  width:25px;
-  height:13px;
-  border:1.5px solid #c9a24b;
+  width:27px;
+  height:14px;
+  border:2px solid #d1a94e;
   border-radius:100% 0 100% 0;
-  transform:rotate(-35deg);
 }
-.l1{top:20px;left:34px}
-.l2{top:42px;left:52px;transform:rotate(12deg)}
-.l3{top:61px;left:68px;transform:rotate(-20deg)}
-.l4{top:80px;left:82px;transform:rotate(18deg)}
-.l5{top:97px;left:92px;transform:rotate(-25deg)}
+.leaf.a{left:18px;top:22px;transform:rotate(-25deg)}
+.leaf.b{left:42px;top:39px;transform:rotate(28deg)}
+.leaf.c{left:13px;top:58px;transform:rotate(-28deg)}
+.leaf.d{left:51px;top:73px;transform:rotate(30deg)}
+.leaf.e{left:25px;top:91px;transform:rotate(-20deg)}
 
-.header{
+.photo-wrap{
   position:relative;
-  z-index:2;
-  text-align:center;
-  padding:31px 18px 21px;
-  background:#fff;
-  border-bottom:1px solid #e8e3d8;
+  width:140px;
+  height:140px;
+  margin:0 auto 17px;
+  border-radius:50%;
+  padding:5px;
+  background:#d9b65e;
+  box-shadow:0 5px 18px rgba(0,0,0,.18);
 }
-
-.profile{
+.photo-wrap:before{
+  content:"";
+  position:absolute;
+  inset:-7px;
+  border:1px solid #d9b65e;
+  border-radius:50%;
+}
+.photo{
+  width:100%;
+  height:100%;
   display:block;
-  width:126px;
-  height:126px;
-  margin:0 auto 16px;
   object-fit:cover;
   object-position:center top;
   border-radius:50%;
-  border:4px solid #c9a24b;
   background:#fff;
-  box-shadow:0 3px 12px rgba(0,0,0,.12);
 }
 
 h1{
-  margin:0 0 7px;
-  font-size:24px;
-  font-weight:700;
-  color:#17233a;
-}
-
-.subtitle{
+  position:relative;
   margin:0;
+  color:#102746;
+  font-size:25px;
+}
+.subtitle{
+  position:relative;
+  margin:7px 0 0;
+  color:#4d5663;
   font-size:15px;
   line-height:1.8;
-  color:#555;
 }
-
-.gold-line{
-  width:58px;
+.divider{
+  width:95px;
   height:2px;
-  background:#c9a24b;
-  margin:13px auto 0;
-}
-
-.content{
+  margin:14px auto 0;
+  background:#d9b65e;
   position:relative;
-  z-index:2;
-  padding:18px 15px 23px;
+}
+.divider:after{
+  content:"◆";
+  position:absolute;
+  font-size:10px;
+  color:#d9b65e;
+  left:50%;
+  top:-8px;
+  transform:translateX(-50%);
+  background:#fff;
+  padding:0 6px;
 }
 
-.list{
-  display:grid;
-  gap:11px;
+/* أزرار التواصل */
+.content{
+  padding:19px 16px 25px;
+  background:#fff;
 }
+.list{display:grid;gap:11px}
 
-.btn{
-  min-height:68px;
+.item{
+  min-height:69px;
   display:flex;
   align-items:center;
   gap:12px;
   padding:9px 12px;
-  border:1px solid #e1dccf;
-  border-radius:16px;
+  border:1px solid #ddd;
+  border-radius:17px;
   background:#fff;
-  color:#17233a;
+  color:#14243d;
   text-decoration:none;
-  box-shadow:0 3px 10px rgba(0,0,0,.045);
-  transition:.18s ease;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+  transition:.18s;
 }
-
-.btn:hover{
+.item:hover{
   transform:translateY(-2px);
-  border-color:#c9a24b;
-  box-shadow:0 7px 17px rgba(0,0,0,.09);
+  border-color:#d9b65e;
+  box-shadow:0 7px 18px rgba(0,0,0,.12);
 }
 
 .icon{
-  width:50px;
-  height:50px;
-  flex:0 0 50px;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width:51px;height:51px;flex:0 0 51px;
+  border-radius:15px;
+  display:flex;align-items:center;justify-content:center;
 }
-
 .icon svg{width:29px;height:29px}
-
-.phone .icon{background:#17233a}
+.phone .icon{background:#102746}
 .phone .icon svg{fill:#fff}
-
-.email .icon{background:#f4f2ee}
+.email .icon{background:#f3f3f3}
 .email .icon svg{width:32px;height:32px}
-
 .facebook .icon{background:#1877f2}
 .instagram .icon{background:#d62976}
 .linkedin .icon{background:#0a66c2}
+.facebook .icon svg,.instagram .icon svg,.linkedin .icon svg{fill:#fff}
 
-.facebook .icon svg,
-.instagram .icon svg,
-.linkedin .icon svg{fill:#fff}
-
-.info{
-  flex:1;
-  min-width:0;
-  text-align:right;
-}
-
-.name{
-  display:block;
-  font-size:15px;
-  font-weight:700;
-  margin-bottom:3px;
-}
-
+.info{flex:1;min-width:0;text-align:right}
+.label{display:block;font-size:15px;font-weight:bold;margin-bottom:3px}
 .value{
   display:block;
-  font-size:13px;
-  color:#687386;
+  font:13px Arial,sans-serif;
+  color:#697383;
   direction:ltr;
   text-align:right;
   overflow-wrap:anywhere;
 }
-
 .arrow{
-  font-size:25px;
-  color:#c9a24b;
+  color:#c59e49;
+  font-size:27px;
   line-height:1;
 }
 
 .footer{
+  margin-top:17px;
   text-align:center;
-  color:#999;
+  color:#9a9a9a;
   font-size:11px;
-  margin-top:15px;
+}
+.footer-line{
+  width:80px;height:1px;
+  background:#d9b65e;
+  margin:0 auto 9px;
 }
 
-/* زخرفة ذهبية أسفل المحتوى */
-.ornament{
-  width:90px;
-  height:1px;
-  background:#c9a24b;
-  margin:18px auto 0;
-  position:relative;
-}
-.ornament:before,
-.ornament:after{
-  content:"";
+/* زوايا ذهبية داخل البطاقة */
+.corner{
   position:absolute;
-  top:-4px;
-  width:9px;
-  height:9px;
-  border:1px solid #c9a24b;
-  transform:rotate(45deg);
-  background:#fff;
+  width:45px;height:45px;
+  border-color:#d9b65e;
+  border-style:solid;
+  pointer-events:none;
 }
-.ornament:before{left:14px}
-.ornament:after{right:14px}
+.corner.tl{top:10px;left:10px;border-width:2px 0 0 2px;border-radius:12px 0 0 0}
+.corner.tr{top:10px;right:10px;border-width:2px 2px 0 0;border-radius:0 12px 0 0}
+.corner.bl{bottom:10px;left:10px;border-width:0 0 2px 2px;border-radius:0 0 0 12px}
+.corner.br{bottom:10px;right:10px;border-width:0 2px 2px 0;border-radius:0 0 12px 0}
 </style>
 </head>
 
 <body>
+<div class="bg-top"></div>
+<div class="bg-bottom"></div>
 
+<div class="page">
 <div class="card">
 
-  <div class="decor top-left">
-    <div class="branch"></div>
-    <div class="leaf l1"></div>
-    <div class="leaf l2"></div>
-    <div class="leaf l3"></div>
-    <div class="leaf l4"></div>
-    <div class="leaf l5"></div>
-  </div>
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
 
-  <div class="decor bottom-right">
-    <div class="branch"></div>
-    <div class="leaf l1"></div>
-    <div class="leaf l2"></div>
-    <div class="leaf l3"></div>
-    <div class="leaf l4"></div>
-    <div class="leaf l5"></div>
-  </div>
+<header class="card-head">
 
-  <header class="header">
-    <img class="profile" src="profile.png" alt="الصورة الشخصية">
-
-    <h1>مرحباً بكم</h1>
-
-    <p class="subtitle">
-      إختر أحد الوسائل التالية للتّواصل معنا
-    </p>
-
-    <div class="gold-line"></div>
-  </header>
-
-  <main class="content">
-
-    <div class="list">
-
-      <!-- الهاتف الأول -->
-      <a class="btn phone" href="tel:0562871191">
-        <span class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M6.6 10.8c1.5 2.9 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1 .3 2 .5 3.1.5.7 0 1.3.6 1.3 1.3v3.1c0 .7-.6 1.3-1.3 1.3C11.3 21.2 2.8 12.7 2.8 2.3 2.8 1.6 3.4 1 4.1 1h3.1c.7 0 1.3.6 1.3 1.3 0 1.1.2 2.1.5 3.1.1.4 0 .9-.2 1.2z"/>
-          </svg>
-        </span>
-        <span class="info">
-          <span class="name">الهاتف</span>
-          <span class="value">0562871191</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
-      <!-- الهاتف الثاني -->
-      <a class="btn phone" href="tel:0563890841">
-        <span class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M6.6 10.8c1.5 2.9 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1 .3 2 .5 3.1.5.7 0 1.3.6 1.3 1.3v3.1c0 .7-.6 1.3-1.3 1.3C11.3 21.2 2.8 12.7 2.8 2.3 2.8 1.6 3.4 1 4.1 1h3.1c.7 0 1.3.6 1.3 1.3 0 1.1.2 2.1.5 3.1.1.4 0 .9-.2 1.2z"/>
-          </svg>
-        </span>
-        <span class="info">
-          <span class="name">الهاتف</span>
-          <span class="value">0563890841</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
-      <!-- البريد -->
-      <a class="btn email" href="mailto:Abdellah.Chikhaoui13@gmail.com">
-        <span class="icon">
-          <svg viewBox="0 0 64 64">
-            <path fill="#ea4335" d="M6 15l26 20L58 15v34H6z"/>
-            <path fill="#c5221f" d="M6 15l26 20L58 15 32 39z"/>
-            <path fill="#fbbc04" d="M6 49V15l26 20z"/>
-            <path fill="#34a853" d="M58 49V15L32 35z"/>
-          </svg>
-        </span>
-        <span class="info">
-          <span class="name">البريد الإلكتروني</span>
-          <span class="value">Abdellah.Chikhaoui13@gmail.com</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
-      <!-- Facebook -->
-      <a class="btn facebook" href="https://www.facebook.com/abdallah.chikhaoui.2025/" target="_blank" rel="noopener">
-        <span class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V10H7.7v3h2.7v8z"/>
-          </svg>
-        </span>
-        <span class="info">
-          <span class="name">Facebook</span>
-          <span class="value">abdallah.chikhaoui.2025</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
-      <!-- Instagram -->
-      <a class="btn instagram" href="https://www.instagram.com/abdallahchk2024/" target="_blank" rel="noopener">
-        <span class="icon">
-          <svg viewBox="0 0 24 24">
-            <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="#fff" stroke-width="2"/>
-            <circle cx="12" cy="12" r="4.2" fill="none" stroke="#fff" stroke-width="2"/>
-            <circle cx="17.4" cy="6.7" r="1.2"/>
-          </svg>
-        </span>
-        <span class="info">
-          <span class="name">Instagram</span>
-          <span class="value">abdallahchk2024</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
-      <!-- LinkedIn -->
-      <a class="btn linkedin" href="https://www.linkedin.com/in/abdallah-chikhaoui-b58807218/" target="_blank" rel="noopener">
-        <span class="icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M5 3.8A2.2 2.2 0 1 1 5 8.2 2.2 2.2 0 0 1 5 3.8zM3.2 9.7h3.6V21H3.2zM9 9.7h3.4v1.55h.05c.47-.9 1.62-1.85 3.35-1.85 3.58 0 4.24 2.35 4.24 5.4V21h-3.6v-5.48c0-1.31-.03-3-1.83-3-1.83 0-2.11 1.43-2.11 2.91V21H9z"/>
-          </svg>
-        </span>
-        <span class="info">
-          <span class="name">LinkedIn</span>
-          <span class="value">abdallah-chikhaoui-b58807218</span>
-        </span>
-        <span class="arrow">‹</span>
-      </a>
-
-    </div>
-
-    <div class="ornament"></div>
-    <div class="footer">اضغط على أي وسيلة للتواصل مباشرة</div>
-
-  </main>
+<div class="flower left">
+<div class="stem"></div>
+<div class="leaf a"></div><div class="leaf b"></div>
+<div class="leaf c"></div><div class="leaf d"></div><div class="leaf e"></div>
 </div>
 
+<div class="flower right">
+<div class="stem"></div>
+<div class="leaf a"></div><div class="leaf b"></div>
+<div class="leaf c"></div><div class="leaf d"></div><div class="leaf e"></div>
+</div>
+
+<div class="photo-wrap">
+<img class="photo" src="profile.png" alt="الصورة الشخصية">
+</div>
+
+<h1>مرحباً بكم</h1>
+<p class="subtitle">إختر أحد الوسائل التالية للتّواصل معنا</p>
+<div class="divider"></div>
+</header>
+
+<main class="content">
+<div class="list">
+
+<a class="item phone" href="tel:0562871191">
+<span class="icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 2.9 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1 .3 2 .5 3.1.5.7 0 1.3.6 1.3 1.3v3.1c0 .7-.6 1.3-1.3 1.3C11.3 21.2 2.8 12.7 2.8 2.3 2.8 1.6 3.4 1 4.1 1h3.1c.7 0 1.3.6 1.3 1.3 0 1.1.2 2.1.5 3.1.1.4 0 .9-.2 1.2z"/></svg></span>
+<span class="info"><span class="label">الهاتف</span><span class="value">0562871191</span></span><span class="arrow">‹</span>
+</a>
+
+<a class="item phone" href="tel:0563890841">
+<span class="icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 2.9 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1 .3 2 .5 3.1.5.7 0 1.3.6 1.3 1.3v3.1c0 .7-.6 1.3-1.3 1.3C11.3 21.2 2.8 12.7 2.8 2.3 2.8 1.6 3.4 1 4.1 1h3.1c.7 0 1.3.6 1.3 1.3 0 1.1.2 2.1.5 3.1.1.4 0 .9-.2 1.2z"/></svg></span>
+<span class="info"><span class="label">الهاتف</span><span class="value">0563890841</span></span><span class="arrow">‹</span>
+</a>
+
+<a class="item email" href="mailto:Abdellah.Chikhaoui13@gmail.com">
+<span class="icon"><svg viewBox="0 0 64 64"><path fill="#ea4335" d="M6 15l26 20L58 15v34H6z"/><path fill="#c5221f" d="M6 15l26 20L58 15 32 39z"/><path fill="#fbbc04" d="M6 49V15l26 20z"/><path fill="#34a853" d="M58 49V15L32 35z"/></svg></span>
+<span class="info"><span class="label">البريد الإلكتروني</span><span class="value">Abdellah.Chikhaoui13@gmail.com</span></span><span class="arrow">‹</span>
+</a>
+
+<a class="item facebook" href="https://www.facebook.com/abdallah.chikhaoui.2025/" target="_blank" rel="noopener">
+<span class="icon"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V10H7.7v3h2.7v8z"/></svg></span>
+<span class="info"><span class="label">Facebook</span><span class="value">abdallah.chikhaoui.2025</span></span><span class="arrow">‹</span>
+</a>
+
+<a class="item instagram" href="https://www.instagram.com/abdallahchk2024/" target="_blank" rel="noopener">
+<span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.4" cy="6.7" r="1.2"/></svg></span>
+<span class="info"><span class="label">Instagram</span><span class="value">abdallahchk2024</span></span><span class="arrow">‹</span>
+</a>
+
+<a class="item linkedin" href="https://www.linkedin.com/in/abdallah-chikhaoui-b58807218/" target="_blank" rel="noopener">
+<span class="icon"><svg viewBox="0 0 24 24"><path d="M5 3.8A2.2 2.2 0 1 1 5 8.2 2.2 2.2 0 0 1 5 3.8zM3.2 9.7h3.6V21H3.2zM9 9.7h3.4v1.55h.05c.47-.9 1.62-1.85 3.35-1.85 3.58 0 4.24 2.35 4.24 5.4V21h-3.6v-5.48c0-1.31-.03-3-1.83-3-1.83 0-2.11 1.43-2.11 2.91V21H9z"/></svg></span>
+<span class="info"><span class="label">LinkedIn</span><span class="value">abdallah-chikhaoui-b58807218</span></span><span class="arrow">‹</span>
+</a>
+
+</div>
+
+<div class="footer-line"></div>
+<div class="footer">اضغط على أي وسيلة للتواصل مباشرة</div>
+</main>
+</div>
+</div>
 </body>
 </html>
